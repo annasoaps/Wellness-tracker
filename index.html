@@ -1,48 +1,248 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Week 24 Wellness Planner</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anna Wellness Tracker</title>
 <style>
-:root{--bg:#f7f3e9;--card:#fffdf8;--ink:#30402f;--muted:#6f7968;--line:#e3d9c8;--sage:#7f9a74;--sage2:#dfe9d8;--rose:#ead4ca;--gold:#c49a45;--lav:#ece8f8;--shadow:0 10px 30px rgba(55,68,45,.12);}
-*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#fbf7ee,#eef5eb);font-family:ui-rounded,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);font-size:18px;line-height:1.35}.wrap{max-width:980px;margin:auto;padding:18px}.hero{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#dcebd4,transparent 70%)}h1{font-size:48px;letter-spacing:.03em;margin:0 0 4px;font-family:Georgia,serif;color:#294024}.script{font-family:Georgia,serif;font-style:italic;font-size:28px;margin:8px 0 16px;color:#3c5538}.grid{display:grid;gap:14px}.topgrid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin-top:16px}.mini{background:#fffffbcc;border:1px solid var(--line);border-radius:18px;padding:15px}.mini b{display:block;margin-bottom:4px}.stats{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin-top:14px}.stat{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}.stat .num{font-size:28px;font-weight:800}.section{margin-top:22px}.section h2{font-size:30px;margin:0 0 12px;color:#344b31}.day{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px;margin:16px 0;box-shadow:0 6px 18px rgba(55,68,45,.08)}.dayhead{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px}.day h3{font-size:27px;margin:0;font-family:Georgia,serif}.pill{background:var(--sage2);padding:7px 10px;border-radius:999px;font-size:14px;color:#40523b}.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:9px;margin:10px 0}.check{background:#faf8f1;border:1px solid var(--line);border-radius:15px;padding:10px;display:flex;gap:9px;align-items:flex-start}.check input{width:22px;height:22px;accent-color:var(--sage);flex:0 0 auto}.workout,.noteBox{background:#f8f5ed;border-left:5px solid var(--sage);padding:12px;border-radius:14px;margin:10px 0}.workout ul{margin:6px 0 0 20px;padding:0}.inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}label.small{font-size:13px;font-weight:700;color:var(--muted);display:block;margin-bottom:3px}input[type=number],input[type=text],textarea,select{width:100%;padding:11px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);font:inherit}textarea{min-height:74px;resize:vertical}.score{margin-top:12px;background:linear-gradient(90deg,var(--sage2),#fff);padding:12px;border-radius:16px;font-weight:800}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.btn{border:0;border-radius:999px;padding:14px 18px;font-weight:800;font-size:17px;background:var(--sage);color:white;box-shadow:0 5px 16px rgba(60,80,50,.18)}.btn.secondary{background:#d8c6bb;color:#3d332c}.progressOuter{height:22px;background:#ece4d6;border-radius:999px;overflow:hidden;border:1px solid var(--line)}.progressInner{height:100%;width:0;background:linear-gradient(90deg,#9db58e,#6f8f68);transition:.2s}.report{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;min-height:120px}.footer{text-align:center;color:var(--muted);font-size:15px;margin:28px 0}.tag{display:inline-block;background:#f2eadc;border-radius:999px;padding:5px 9px;margin:2px;font-size:14px}.gentle{background:#f7efe8;border-left-color:#d7a88e}.lav{background:#f3f0fb;border-left-color:#9b8ec8}@media(max-width:560px){body{font-size:17px}.wrap{padding:12px}h1{font-size:40px}.script{font-size:24px}.day{padding:14px}.checks{grid-template-columns:1fr}.dayhead{align-items:flex-start;flex-direction:column}.inputs{grid-template-columns:repeat(2,1fr)}.hero{padding:18px}}
+:root{
+  --bg:#f7f0e6;--card:#fffaf2;--ink:#2f3b2f;--muted:#6c7667;
+  --sage:#78906a;--sage2:#e5eddd;--rose:#f3dfd7;--lav:#efe8f7;
+  --line:#e3d7c5;--shadow:0 18px 45px rgba(55,67,48,.14);
+}
+*{box-sizing:border-box}
+body{margin:0;padding:16px;background:linear-gradient(135deg,#fffaf2,#eef5e8);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}
+.app{max-width:1100px;margin:auto}
+.card,.day{background:rgba(255,250,242,.95);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-bottom:14px}
+.hero>div{padding:24px}
+h1{font-family:Georgia,serif;font-size:48px;margin:0;color:#263820}
+h2{font-family:Georgia,serif;margin:0 0 10px}
+.script{font-family:"Snell Roundhand","Brush Script MT",cursive;font-size:32px;margin:8px 0}
+.muted{color:var(--muted);line-height:1.45}
+.nav{position:sticky;top:0;z-index:9;display:flex;gap:8px;overflow:auto;padding:10px 0;background:rgba(247,240,230,.9);backdrop-filter:blur(10px)}
+.nav button{border:0;border-radius:999px;padding:11px 15px;background:#e6ddd0;font-weight:800;color:var(--ink);white-space:nowrap}
+.nav button.active{background:var(--sage);color:white}
+.page{display:none}.page.active{display:block}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+.panel{padding:18px}
+ul{margin:6px 0 0;padding-left:20px;line-height:1.55}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.stat{text-align:center;border:1px solid var(--line);border-radius:20px;padding:12px;background:#fffdf8}
+.stat b{font-size:24px;display:block}
+.days{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.day{padding:18px}
+.dayhead{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px}
+.day h2{font-size:26px}
+.badge{background:var(--sage2);border-radius:999px;padding:7px 10px;font-weight:900}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info{border-left:7px solid var(--sage);background:#fffdf8;border-radius:18px;padding:12px;margin-bottom:10px}
+.info h3{margin:0 0 4px;font-size:16px}
+.info p{margin:0;line-height:1.4}
+.skin{border-left-color:#d29b85;background:#fff5ef}.yoga{border-left-color:#9a85bd;background:#f8f2ff}.self{border-left-color:#70a075;background:#f5fbf4}
+.check{display:flex;align-items:center;gap:10px;background:#fffdf8;border:1px solid var(--line);border-radius:17px;padding:11px;margin-bottom:8px}
+.check input{width:24px;height:24px;accent-color:var(--sage)}
+label.small{font-size:13px;font-weight:800;color:var(--muted);display:block;margin-bottom:4px}
+input,textarea{width:100%;border:1px solid #ded4c5;border-radius:15px;padding:11px;background:#fffefa;font:inherit}
+textarea{min-height:78px;resize:vertical}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.bar{height:14px;background:#e6dccd;border-radius:999px;overflow:hidden;margin:10px 0}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--sage),#abc195)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.primary,.secondary{border:0;border-radius:999px;padding:13px 18px;font-weight:900;font-size:16px}
+.primary{background:var(--sage);color:white}.secondary{background:#e1d0c7;color:#42342f}
+.report{white-space:pre-wrap;background:#fffdf8;border:1px solid var(--line);border-radius:18px;padding:14px;min-height:180px}
+details{border:1px solid var(--line);border-radius:18px;padding:12px;background:#fffdf8;margin-top:10px}
+summary{font-weight:900}
+@media(max-width:850px){.hero,.grid3,.days,.twocol{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}h1{font-size:40px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header class="hero">
-<h1>WEEK 24</h1>
-<div>June 8 – June 14, 2026</div>
-<div class="script">Minimums that matter 🌿</div>
-<div class="grid topgrid">
- <div class="mini"><b>Theme</b>Hospital-week survival rhythm: water, protein, walk, face, sleep. Nothing fancy required.</div>
- <div class="mini"><b>Stacked Water</b>1 L water + lemon + cucumber + frozen berries + pinch mineral salt. Optional: 5 g creatine.</div>
- <div class="mini"><b>Weekly Challenge</b>Fiber treasure hunt: aim for 30 g/day or add one fiber jewel daily.</div>
- <div class="mini"><b>Food Anchor</b>Protein at each meal: eggs, Greek yogurt, tofu, fish, chicken, lentils, cottage cheese.</div>
+<div class="app">
+  <section class="hero">
+    <div class="card">
+      <h1>WEEK 24</h1>
+      <p class="muted">June 8 – June 14, 2026</p>
+      <div class="script">Gentle Systems, Real Life ♡</div>
+      <p class="muted">Minimums that matter: walk, protein, water, face, sleep. Strength is a bonus, not a punishment.</p>
+    </div>
+    <div class="card">
+      <h2>This week</h2>
+      <ul>
+        <li>Walk 10–30 min most days</li>
+        <li>Protein + fiber anchors</li>
+        <li>Week 2 after microneedling skincare</li>
+        <li>Use the report button on Sunday</li>
+      </ul>
+    </div>
+  </section>
+
+  <nav class="nav">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="days">Daily cards</button>
+    <button data-tab="strength">Strength</button>
+    <button data-tab="skin">Skincare</button>
+    <button data-tab="supp">Supplements</button>
+    <button data-tab="report">Report</button>
+  </nav>
+
+  <section id="overview" class="page active">
+    <div class="grid3">
+      <div class="card panel">
+        <h2>Last week snapshot</h2>
+        <div class="stats">
+          <div class="stat"><small>Steps</small><b>7,165</b><small>/day</small></div>
+          <div class="stat"><small>Exercise</small><b>34</b><small>min/day</small></div>
+          <div class="stat"><small>Sleep</small><b>6h46</b><small>/night</small></div>
+          <div class="stat"><small>RHR</small><b>64</b><small>bpm</small></div>
+          <div class="stat"><small>HRV</small><b>39</b><small>ms</small></div>
+        </div>
+      </div>
+      <div class="card panel">
+        <h2>Current week averages</h2>
+        <p class="muted">Fill in from Apple Health near the end of the week.</p>
+        <div class="metrics">
+          <div><label class="small">Steps avg</label><input id="cw_steps" data-save type="number"></div>
+          <div><label class="small">Exercise min</label><input id="cw_ex" data-save type="number"></div>
+          <div><label class="small">Sleep avg</label><input id="cw_sleep" data-save placeholder="7h05"></div>
+          <div><label class="small">HRV</label><input id="cw_hrv" data-save type="number"></div>
+          <div><label class="small">RHR</label><input id="cw_rhr" data-save type="number"></div>
+          <div><label class="small">BP optional</label><input id="cw_bp" data-save></div>
+        </div>
+      </div>
+      <div class="card panel">
+        <h2>Weekly challenge</h2>
+        <p><b>Fiber treasure hunt:</b> aim for 30 g/day, or add one fiber jewel daily.</p>
+        <p><b>Stacked water:</b> 1 L water + lemon + cucumber + frozen berries + pinch mineral salt. Optional: 5 g creatine.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="days" class="page"><div class="days" id="daysBox"></div></section>
+
+  <section id="strength" class="page">
+    <div class="grid3">
+      <div class="card panel"><h2>Upper Body A</h2><ul><li>Chest Press 3×10</li><li>Seated Row 3×10</li><li>Shoulder Press 3×10–12</li><li>Lat Pulldown 3×10</li><li>Biceps Curl 2×12</li><li>Plank 2×30–45 sec</li></ul></div>
+      <div class="card panel"><h2>Lower Body B</h2><ul><li>Goblet Squat 3×10</li><li>Romanian Deadlift 3×10</li><li>Hip Thrust 3×12</li><li>Leg Curl 3×12</li><li>Calf Raise 3×15</li><li>Side Plank 2×30 sec/side</li></ul></div>
+      <div class="card panel"><h2>Full Body C</h2><ul><li>Kettlebell Deadlift 3×12</li><li>Incline Press 3×10</li><li>Row 3×10</li><li>Step-ups 3×12/leg</li><li>Farmer Carry 3 rounds</li><li>Bird Dog 3×10/side</li></ul></div>
+    </div>
+  </section>
+
+  <section id="skin" class="page">
+    <div class="grid3">
+      <div class="card panel"><h2>Week 2 after microneedling</h2><ul><li>AM: gentle cleanse/rinse, toner, vitamin C if calm, serum, moisturizer, SPF.</li><li>PM: cleanse, toner, serum, moisturizer/barrier cream.</li><li>Retinoid 2–3 nights only if skin feels calm.</li><li>Avoid harsh acids/exfoliation.</li></ul></div>
+      <div class="card panel"><h2>Retinoid nights</h2><p>Suggested: Wednesday + Friday. Add Sunday only if skin is calm and happy.</p></div>
+      <div class="card panel"><h2>Samples</h2><p>Use single-use samples on calm-skin days. If anything stings, rinse and go barrier-only.</p></div>
+    </div>
+  </section>
+
+  <section id="supp" class="page">
+    <div class="grid3">
+      <div class="card panel"><h2>Morning</h2><ul><li><b>Levaxin:</b> empty stomach. Keep away from minerals like magnesium/calcium/iron.</li><li><b>NMN:</b> optional, morning/early day.</li></ul></div>
+      <div class="card panel"><h2>With food</h2><ul><li><b>Omega-3:</b> with meal, ideally with fat.</li><li><b>D-vitamin/D2:</b> with fat-containing meal.</li><li><b>Q10 + selenium:</b> with food.</li></ul></div>
+      <div class="card panel"><h2>Evening</h2><ul><li><b>Magnesium:</b> evening, with/after food.</li><li><b>Turmeric/ginger:</b> with food if your stomach prefers it.</li></ul></div>
+    </div>
+  </section>
+
+  <section id="report" class="page">
+    <div class="grid3">
+      <div class="card panel">
+        <h2>Weekly progress</h2>
+        <div class="bar"><div class="fill" id="fill"></div></div>
+        <p><b id="pct">0%</b> of checkboxes completed.</p>
+        <div class="actions">
+          <button class="primary" id="makeReport">✨ Generate weekly check-in</button>
+          <button class="secondary" id="reset">Reset</button>
+        </div>
+      </div>
+      <div class="card panel" style="grid-column:span 2">
+        <h2>Copy this to ChatGPT</h2>
+        <div class="report" id="out">Your report will appear here.</div>
+      </div>
+    </div>
+  </section>
 </div>
-<div class="grid stats">
- <div class="stat"><div class="num">7,165</div><div>steps avg</div></div><div class="stat"><div class="num">34</div><div>exercise min</div></div><div class="stat"><div class="num">6h46</div><div>sleep avg</div></div><div class="stat"><div class="num">64</div><div>resting HR</div></div><div class="stat"><div class="num">39</div><div>HRV</div></div>
-</div>
-</header>
-<section class="section"><h2>Daily cards</h2><div id="days"></div></section>
-<section class="section day">
-<h2>Weekly progress</h2>
-<div class="progressOuter"><div id="weeklyBar" class="progressInner"></div></div>
-<p id="weeklyText">0% complete</p>
-<div class="buttons"><button class="btn" onclick="generateReport()">✨ Generate weekly check-in</button><button class="btn secondary" onclick="resetAll()">Reset</button></div>
-<div id="report" class="report"></div>
-</section>
-<div class="footer">Saved locally in this browser. GitHub Pages will make this much easier to open on iPhone.</div>
-</div>
+
 <script>
 const days=[
-{d:'Friday',date:'Jun 12',focus:'Gentle reset',workout:'No formal strength needed',skin:'Gentle cleanse, hydrating toner, moisturizer, SPF. No actives if skin feels sensitive.',self:'Hospital-chair decompression: shoulder rolls + 5 slow breaths.',yoga:'5–10 min neck, shoulders and back'},
-{d:'Saturday',date:'Jun 13',focus:'Soft strength or rest',workout:'Optional 20 min: Goblet squat 2x10, Row 2x10, KB deadlift 2x10, Farmer carry 3 rounds, Bird dog 2x10.',skin:'Hydrate + barrier. Use rich cream if dry.',self:'Warm shower, clean pajamas, early bed if possible.',yoga:'10 min veranda stretch'},
-{d:'Sunday',date:'Jun 14',focus:'Review + recover',workout:'Long gentle walk only, 30–45 min if possible.',skin:'Sheet mask or rich moisturizer night.',self:'Plan Week 25, refill water bottle, prep simple protein.',yoga:'10–15 min slow floor stretch'}];
-const checks=['Walk 10–30 min','Protein anchor','Water / stacked water','Fiber jewel','Skincare minimum','Supplements','Sleep routine','Yoga / breathing'];
-function dayHtml(day,i){return `<article class="day" data-day="${i}"><div class="dayhead"><h3>${day.d} <span class="pill">${day.date}</span></h3><span class="pill">${day.focus}</span></div><div class="workout"><b>Movement</b><br>${day.workout}</div><div class="noteBox lav"><b>Yoga / reset</b><br>${day.yoga}</div><div class="noteBox gentle"><b>Skincare</b><br>${day.skin}</div><div class="noteBox"><b>Self-care</b><br>${day.self}</div><div class="checks">${checks.map((c,j)=>`<label class="check"><input type="checkbox" data-key="d${i}c${j}">${c}</label>`).join('')}</div><div class="inputs"><div><label class="small">Calories</label><input type="number" data-key="d${i}cal" placeholder="kcal"></div><div><label class="small">Protein g</label><input type="number" data-key="d${i}pro" placeholder="g"></div><div><label class="small">Fiber g</label><input type="number" data-key="d${i}fib" placeholder="g"></div><div><label class="small">Sleep h</label><input type="number" step="0.1" data-key="d${i}sleep" placeholder="h"></div><div><label class="small">HRV</label><input type="number" data-key="d${i}hrv" placeholder="ms"></div><div><label class="small">RHR</label><input type="number" data-key="d${i}rhr" placeholder="bpm"></div><div><label class="small">Energy 1–5</label><input type="number" min="1" max="5" data-key="d${i}energy"></div><div><label class="small">Stress 1–5</label><input type="number" min="1" max="5" data-key="d${i}stress"></div></div><p><label class="small">Notes / 3 wins</label><textarea data-key="d${i}notes" placeholder="What helped today? What was hard? Tiny wins count."></textarea></p><div class="score" id="score${i}">Daily score: 0/${checks.length}</div></article>`}
-document.getElementById('days').innerHTML=days.map(dayHtml).join('');
-function allInputs(){return [...document.querySelectorAll('input,textarea')]}function save(){allInputs().forEach(el=>{const k=el.dataset.key;if(!k)return;localStorage.setItem('anna_w24_'+k,el.type==='checkbox'?el.checked:el.value)});calc()}function load(){allInputs().forEach(el=>{const k=el.dataset.key;if(!k)return;const v=localStorage.getItem('anna_w24_'+k);if(v!==null){if(el.type==='checkbox')el.checked=v==='true';else el.value=v}});calc()}function calc(){let done=0,total=days.length*checks.length;days.forEach((_,i)=>{let s=0;checks.forEach((_,j)=>{if(document.querySelector(`[data-key=d${i}c${j}]`).checked)s++});done+=s;document.getElementById('score'+i).textContent=`Daily score: ${s}/${checks.length}`});let pct=Math.round(done/total*100);document.getElementById('weeklyBar').style.width=pct+'%';document.getElementById('weeklyText').textContent=`${pct}% complete (${done}/${total} essentials)`}function avg(keys){let vals=keys.map(k=>+localStorage.getItem('anna_w24_'+k)).filter(v=>v>0);return vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1):'not logged'}function sum(keys){let vals=keys.map(k=>+localStorage.getItem('anna_w24_'+k)).filter(v=>v>0);return vals.reduce((a,b)=>a+b,0).toFixed(0)}function countCheck(j){return days.filter((_,i)=>document.querySelector(`[data-key=d${i}c${j}]`).checked).length}function generateReport(){save();let notes=days.map((day,i)=>{let n=localStorage.getItem('anna_w24_d'+i+'notes')||'';return n?`${day.d}: ${n}`:''}).filter(Boolean).join('\n');let text=`Week 24 check-in\n\nEssentials: ${document.getElementById('weeklyText').textContent}\nWalks: ${countCheck(0)}/${days.length}\nProtein anchors: ${countCheck(1)}/${days.length}\nWater: ${countCheck(2)}/${days.length}\nFiber jewels: ${countCheck(3)}/${days.length}\nSkincare minimum: ${countCheck(4)}/${days.length}\nYoga/breathing: ${countCheck(7)}/${days.length}\n\nNutrition logged:\nCalories total: ${sum(days.map((_,i)=>'d'+i+'cal'))} kcal\nProtein total: ${sum(days.map((_,i)=>'d'+i+'pro'))} g\nFiber total: ${sum(days.map((_,i)=>'d'+i+'fib'))} g\nAverage sleep: ${avg(days.map((_,i)=>'d'+i+'sleep'))} h\nAverage energy: ${avg(days.map((_,i)=>'d'+i+'energy'))}/5\nAverage stress: ${avg(days.map((_,i)=>'d'+i+'stress'))}/5\nAverage HRV: ${avg(days.map((_,i)=>'d'+i+'hrv'))} ms\nAverage RHR: ${avg(days.map((_,i)=>'d'+i+'rhr'))} bpm\n\nNotes / wins:\n${notes || 'No notes added.'}\n\nPlease use this to plan my next week.`;document.getElementById('report').textContent=text;navigator.clipboard&&navigator.clipboard.writeText(text).catch(()=>{})}function resetAll(){if(confirm('Clear this week?')){Object.keys(localStorage).filter(k=>k.startsWith('anna_w24_')).forEach(k=>localStorage.removeItem(k));allInputs().forEach(el=>{if(el.type==='checkbox')el.checked=false;else el.value=''});calc();document.getElementById('report').textContent=''}}allInputs().forEach(el=>el.addEventListener('input',save));allInputs().forEach(el=>el.addEventListener('change',save));load();
+["mon","Monday","Jun 8","Upper Body A or 10 min walk","5–10 min neck, shoulders and back","AM: cleanse/rinse, toner, vitamin C if calm, serum, moisturizer, SPF. PM: cleanse, toner, serum, barrier cream.","Hospital-chair decompression: shoulder rolls + 5 slow breaths."],
+["tue","Tuesday","Jun 9","Walk-focused day","10 min hip mobility","AM: same. PM: barrier night.","Sauna or warm shower."],
+["wed","Wednesday","Jun 10","Lower Body B","10 min lower body stretch","AM: same. PM: retinoid if calm, then serum + barrier cream.","Read a few pages before bed."],
+["thu","Thursday","Jun 11","Recovery + walk","15 min restorative","AM: same. PM: barrier night.","Nordic Glow Water day."],
+["fri","Friday","Jun 12","Full Body C","5–10 min shoulders/spine","AM: same. PM: retinoid if calm, then barrier cream.","Hand cream or foot soak."],
+["sat","Saturday","Jun 13","Optional kettlebell 20 min","10 min gentle stretch","AM: same. PM: sheet mask/sleeping pack if calm.","Sauna + digital quiet hour."],
+["sun","Sunday","Jun 14","Long gentle walk","15 min slow stretch","AM: same. PM: barrier + weekly reset.","Generate report and plan next week."]
+];
+const checks=[["walk","Walk"],["strength","Strength/movement"],["protein","Protein target"],["fiber","Fiber"],["water","Water"],["am","AM skincare"],["pm","PM skincare"],["supp","Supplements"],["sleep","Sleep routine"],["yoga","Yoga/breathing"]];
+const box=document.getElementById("daysBox");
+box.innerHTML=days.map(d=>`
+<article class="day">
+  <div class="dayhead"><div><h2>${d[1]}</h2><div class="muted">${d[2]}</div></div><div class="badge" id="${d[0]}_score">0/${checks.length}</div></div>
+  <div class="twocol">
+    <div>
+      <div class="info"><h3>Strength / movement</h3><p>${d[3]}</p></div>
+      <div class="info yoga"><h3>Yoga / reset</h3><p>${d[4]}</p></div>
+      <div class="info skin"><h3>Skincare</h3><p>${d[5]}</p></div>
+      <div class="info self"><h3>Self-care</h3><p>${d[6]}</p></div>
+    </div>
+    <div>
+      ${checks.map(c=>`<label class="check"><input data-save type="checkbox" id="${d[0]}_${c[0]}"><span>${c[1]}</span></label>`).join("")}
+      <div class="metrics">
+        <div><label class="small">Calories</label><input data-save id="${d[0]}_cal" type="number"></div>
+        <div><label class="small">Protein g</label><input data-save id="${d[0]}_prot" type="number"></div>
+        <div><label class="small">Fiber g</label><input data-save id="${d[0]}_fib" type="number"></div>
+        <div><label class="small">Sleep h</label><input data-save id="${d[0]}_sleep" type="number" step=".1"></div>
+        <div><label class="small">Energy 1–5</label><input data-save id="${d[0]}_energy" type="number" min="1" max="5"></div>
+        <div><label class="small">Stress 1–5</label><input data-save id="${d[0]}_stress" type="number" min="1" max="5"></div>
+      </div>
+      <label class="small" style="margin-top:10px">Notes</label><textarea data-save id="${d[0]}_notes"></textarea>
+    </div>
+  </div>
+</article>`).join("");
+
+const KEY="anna_wellness_week24_v3";
+function save(){let o={};document.querySelectorAll("[data-save]").forEach(e=>o[e.id]=e.type==="checkbox"?e.checked:e.value);localStorage.setItem(KEY,JSON.stringify(o));score()}
+function load(){let o=JSON.parse(localStorage.getItem(KEY)||"{}");document.querySelectorAll("[data-save]").forEach(e=>{if(o[e.id]!==undefined){if(e.type==="checkbox")e.checked=o[e.id];else e.value=o[e.id]}e.addEventListener("input",save);e.addEventListener("change",save)});score()}
+function score(){let total=0,done=0;days.forEach(d=>{let dd=0;checks.forEach(c=>{total++;let e=document.getElementById(d[0]+"_"+c[0]);if(e.checked){done++;dd++}});document.getElementById(d[0]+"_score").textContent=dd+"/"+checks.length});let p=Math.round(done/total*100);document.getElementById("fill").style.width=p+"%";document.getElementById("pct").textContent=p+"%"}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.tab).classList.add("active");scrollTo({top:0,behavior:"smooth"})});
+function avg(ids){let a=ids.map(id=>parseFloat(document.getElementById(id).value)).filter(x=>!isNaN(x));return a.length?(a.reduce((x,y)=>x+y,0)/a.length).toFixed(1):"not logged"}
+function cnt(k){return days.filter(d=>document.getElementById(d[0]+"_"+k).checked).length}
+document.getElementById("makeReport").onclick=()=>{let ids=s=>days.map(d=>d[0]+"_"+s);let notes=days.map(d=>{let n=document.getElementById(d[0]+"_notes").value.trim();return n?d[1]+": "+n:null}).filter(Boolean).join("\n");document.getElementById("out").textContent=`Week 24 wellness check-in
+
+Apple Health current week:
+- Steps avg/day: ${document.getElementById("cw_steps").value||"not logged"}
+- Exercise min/day: ${document.getElementById("cw_ex").value||"not logged"}
+- Sleep avg: ${document.getElementById("cw_sleep").value||"not logged"}
+- HRV: ${document.getElementById("cw_hrv").value||"not logged"}
+- Resting HR: ${document.getElementById("cw_rhr").value||"not logged"}
+- Blood pressure: ${document.getElementById("cw_bp").value||"not logged"}
+
+Habits:
+- Walk: ${cnt("walk")}/7
+- Strength/movement: ${cnt("strength")}/7
+- Protein: ${cnt("protein")}/7
+- Fiber: ${cnt("fiber")}/7
+- Water: ${cnt("water")}/7
+- AM skincare: ${cnt("am")}/7
+- PM skincare: ${cnt("pm")}/7
+- Supplements: ${cnt("supp")}/7
+- Sleep routine: ${cnt("sleep")}/7
+- Yoga/breathing: ${cnt("yoga")}/7
+
+Logged averages:
+- Calories: ${avg(ids("cal"))}
+- Protein: ${avg(ids("prot"))} g
+- Fiber: ${avg(ids("fib"))} g
+- Sleep: ${avg(ids("sleep"))} h
+- Energy: ${avg(ids("energy"))}/5
+- Stress: ${avg(ids("stress"))}/5
+
+Context notes:
+${notes||"No notes added."}
+
+Please help me review the week and plan next week.`};
+document.getElementById("reset").onclick=()=>{if(confirm("Reset all saved entries?")){localStorage.removeItem(KEY);location.reload()}};
+load();
 </script>
-</body></html>
+</body>
+</html>
