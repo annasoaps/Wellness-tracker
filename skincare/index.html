@@ -167,7 +167,7 @@
 (()=>{
 'use strict';
 const KEY='skincare_studio_v2', OLD='skincare_studio_v1';
-const defaults={anchor:'2026-10-26',entries:{},checks:{},focus:{}};
+const defaults={anchor:'2026-11-02',entries:{},checks:{},focus:{}};
 let storageOK=true, state={...defaults};
 try{
  const prev=JSON.parse(localStorage.getItem(KEY)||'null');
@@ -175,6 +175,7 @@ try{
  state={...defaults,...(prev||legacy||{}),entries:{...(prev||legacy||{}).entries},checks:{...(prev||legacy||{}).checks},focus:{...(prev||legacy||{}).focus}};
  if(!prev&&legacy)localStorage.setItem(KEY,JSON.stringify(state));
 }catch(e){storageOK=false;}
+if(state.anchor==='2026-10-26'){state.anchor='2026-11-02';try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){storageOK=false;}}
 let period='am', selectedDay=0, selectedTab='today', shelfFilter='all', labIndex=0, feel='comfortable',red='usual';
 const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
 const parseISO=s=>new Date(s+'T12:00:00');
